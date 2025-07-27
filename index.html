@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagine - AI Video Maker</title>
+    <title>Imagine</title>
+
+<!-- Open Graph / Social Media Meta Tags -->
+<meta property="og:title" content="Imagine">
+<meta property="og:description" content="Revolutionary AIx-powered video generator integrated with X platform. Create Hollywood-quality videos from text.">
+<meta property="og:image" content="https://ibb.co/vxNSm2nG">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="http://imaginexai.xyz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Imagine AI">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="https://ibb.co/vxNSm2nG">
+<meta name="twitter:title" content="Imagine ">
+<meta name="twitter:description" content="Revolutionary AIx-powered video generator integrated with X platform.">
+<meta name="twitter:image" content="https://ibb.co/vxNSm2nG">
+
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
 
@@ -21,7 +39,6 @@
             position: relative;
         }
 
-
         .universe-bg {
             position: fixed;
             top: 0;
@@ -31,7 +48,6 @@
             background: radial-gradient(ellipse at center, #1a2644 0%, #0a0e1f 40%, #000 100%);
             z-index: 0;
         }
-
 
         .nebula {
             position: absolute;
@@ -50,7 +66,6 @@
             66% { transform: translate(-30px, 30px) scale(0.9); }
         }
 
-
         .stars-bg {
             position: fixed;
             top: 0;
@@ -61,7 +76,6 @@
             z-index: 1;
         }
 
-
         .container {
             position: relative;
             z-index: 10;
@@ -70,13 +84,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 80px 20px 20px;
         }
 
-        
         .star-system {
             position: absolute;
-            top: -80px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
             width: 120px;
@@ -628,7 +641,6 @@
     </div>
 
     <div class="stars-bg">
-        <!-- Floating orbs -->
         <div class="orb orb1"></div>
         <div class="orb orb2"></div>
 
@@ -663,7 +675,7 @@
     </div>
 
     <div class="container">
-        <div style="position: relative;">
+        <div style="position: relative; margin-top: 60px;">
             <div class="star-system">
                 <div class="main-star"></div>
             </div>
@@ -695,11 +707,9 @@
         </div>
     </div>
     
-    <!-- Toast notification -->
     <div class="toast" id="toast"></div>
     
     <script>
-        // Copy contract address function
         function copyContract() {
             const address = document.getElementById('contractAddress').textContent;
             navigator.clipboard.writeText(address).then(() => {
@@ -716,7 +726,6 @@
             });
         }
         
-        // Toast notification function
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -727,7 +736,6 @@
             }, 3000);
         }
         
-        // Add interactive star generation on click
         document.addEventListener('click', function(e) {
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.crypto-badge')) return;
             
