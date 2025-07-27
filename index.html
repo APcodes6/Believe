@@ -1,0 +1,816 @@
+        /* X Logo in top right */
+        .x-logo-link {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.5s;
+        }
+        
+        .x-logo-link:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .x-logo-link svg {
+            width: 24px;
+            height: 24px;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        
+        .x-logo-link:hover svg {
+            color: #ffd700;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagine - AI Video Maker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated gradient background */
+        .universe-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a2644 0%, #0a0e1f 40%, #000 100%);
+            z-index: 0;
+        }
+
+        /* Nebula effect */
+        .nebula {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            filter: blur(40px);
+            animation: nebula-drift 20s ease-in-out infinite;
+        }
+
+        @keyframes nebula-drift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        /* Stars background */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Main content */
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Enhanced star decoration */
+        .star-system {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                        0 0 20px rgba(255, 215, 0, 0.6),
+                        0 0 30px rgba(255, 215, 0, 0.4);
+            animation: subtle-pulse 3s ease-in-out infinite;
+        }
+
+        .main-star::before,
+        .main-star::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .main-star::before {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+        }
+
+        .main-star::after {
+            width: 60px;
+            height: 1px;
+        }
+
+        .star-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: gentle-rotate 20s linear infinite;
+        }
+
+        .star-rays::before,
+        .star-rays::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.3), transparent);
+        }
+
+        .star-rays::before {
+            width: 0.5px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 215, 0, 0.3), transparent);
+        }
+
+        .star-rays::after {
+            width: 40px;
+            height: 0.5px;
+        }
+
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% {
+                opacity: 0.9;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Enhanced title */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            position: relative;
+            background: linear-gradient(180deg, 
+                #ffffff 0%, 
+                #ffd700 40%, 
+                #ffcc00 60%, 
+                #cc9900 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(255, 215, 0, 0.3);
+            animation: subtle-glow 4s ease-in-out infinite;
+        }
+
+        /* Remove the tacky 3D effect */
+        h1::before {
+            display: none;
+        }
+
+        @keyframes subtle-glow {
+            0%, 100% {
+                filter: brightness(1) drop-shadow(0 2px 20px rgba(255, 215, 0, 0.3));
+            }
+            50% {
+                filter: brightness(1.1) drop-shadow(0 2px 30px rgba(255, 215, 0, 0.4));
+            }
+        }
+
+        /* Particle effect container */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: float-up 10s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+        }
+
+        /* Enhanced subtitle */
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            background: linear-gradient(90deg, #ffd700, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 0.5s, shimmer 3s ease-in-out infinite;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        /* Enhanced description */
+        .description {
+            max-width: 700px;
+            text-align: center;
+            color: #e0e6ff;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 0.8s;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Announcement banner */
+        .announcement {
+            margin: 30px 0;
+            padding: 20px 40px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 0.9s;
+        }
+
+        .announcement p {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Crypto section */
+        .crypto-section {
+            margin: 60px 0;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 1.3s;
+        }
+
+        .crypto-badge {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .crypto-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .crypto-label {
+            color: #ffd700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .ca-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .contract-address {
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            flex: 1;
+            background: none;
+            border: none;
+            margin: 0;
+        }
+
+        .copy-btn {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 215, 0, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .crypto-info {
+            color: #e0e6ff;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* Enhanced CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 25px 70px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+            color: #0a0e1f;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 1.1s;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4),
+                        inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) rotateX(-10deg);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.6),
+                        inset 0 -5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #fff, #ffd700);
+            border-radius: 60px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            filter: blur(5px);
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+            animation: rotate-gradient 2s linear infinite;
+        }
+
+        @keyframes rotate-gradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* X Profile Button */
+
+        /* Enhanced shooting stars */
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            border-radius: 50%;
+            box-shadow: 0 0 10px white,
+                        0 0 20px #ffd700,
+                        0 0 30px #ffd700;
+            animation: shoot 4s linear infinite;
+            opacity: 0;
+        }
+
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.8), rgba(255, 255, 255, 0.5), transparent);
+            right: 4px;
+            filter: blur(1px);
+        }
+
+        /* Enhanced features section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin-top: 100px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards 1.4s;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 215, 0, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .feature:hover::before {
+            top: -150%;
+            left: -150%;
+            opacity: 1;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 215, 0, 0.08);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3),
+                        inset 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+        }
+
+        .feature h3 {
+            color: #ffd700;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .feature p {
+            color: #e0e6ff;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+            filter: blur(40px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(100px, -100px) scale(1.1); }
+            66% { transform: translate(-100px, 50px) scale(0.9); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shoot {
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(0) rotate(-45deg);
+            }
+            5% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-600px) translateY(400px) rotate(-45deg);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Static stars */
+        .star {
+            position: absolute;
+            background: white;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+        }
+
+        /* Generate random particles */
+        .particle:nth-child(odd) { animation-delay: 0s; left: 10%; }
+        .particle:nth-child(even) { animation-delay: 2s; left: 30%; }
+        .particle:nth-child(3n) { animation-delay: 4s; left: 50%; }
+        .particle:nth-child(4n) { animation-delay: 6s; left: 70%; }
+        .particle:nth-child(5n) { animation-delay: 8s; left: 90%; }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(255, 215, 0, 0.9);
+            color: #0a0e1f;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Universe background -->
+    <div class="universe-bg">
+        <div class="nebula"></div>
+    </div>
+
+    <!-- Animated background with stars -->
+    <div class="stars-bg">
+        <!-- Floating orbs -->
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+
+        <!-- Shooting stars -->
+        <div class="shooting-star" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="shooting-star" style="top: 30%; left: 80%; animation-delay: 1.5s;"></div>
+        <div class="shooting-star" style="top: 60%; left: 20%; animation-delay: 3s;"></div>
+        <div class="shooting-star" style="top: 20%; left: 60%; animation-delay: 4.5s;"></div>
+        <div class="shooting-star" style="top: 80%; left: 90%; animation-delay: 6s;"></div>
+        <div class="shooting-star" style="top: 40%; left: 30%; animation-delay: 7.5s;"></div>
+        
+        <!-- Static twinkling stars -->
+        <div class="star" style="width: 6px; height: 6px; top: 15%; left: 25%;"></div>
+        <div class="star" style="width: 8px; height: 8px; top: 20%; left: 75%; animation-delay: 0.5s;"></div>
+        <div class="star" style="width: 4px; height: 4px; top: 40%; left: 45%; animation-delay: 1s;"></div>
+        <div class="star" style="width: 7px; height: 7px; top: 70%; left: 65%; animation-delay: 1.5s;"></div>
+        <div class="star" style="width: 5px; height: 5px; top: 85%; left: 35%; animation-delay: 2s;"></div>
+        <div class="star" style="width: 4px; height: 4px; top: 50%; left: 85%; animation-delay: 2.5s;"></div>
+        <div class="star" style="width: 8px; height: 8px; top: 30%; left: 15%; animation-delay: 0.8s;"></div>
+        <div class="star" style="width: 6px; height: 6px; top: 90%; left: 80%; animation-delay: 1.3s;"></div>
+        <div class="star" style="width: 5px; height: 5px; top: 25%; left: 40%; animation-delay: 3s;"></div>
+        <div class="star" style="width: 7px; height: 7px; top: 75%; left: 20%; animation-delay: 3.5s;"></div>
+    </div>
+
+    <!-- Particle effects -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div style="position: relative;">
+            <div class="star-system">
+                <div class="main-star"></div>
+            </div>
+            <h1>Imagine</h1>
+        </div>
+        
+        <p class="subtitle">Manufactured by Elon Musk • Coming Soon to X</p>
+        
+        <p class="description">
+            An AIx-powered video generator that revolutionizes content creation. Built on cutting-edge neural networks 
+            and integrated directly into the X platform, Imagine represents the future of AI-generated media. 
+            Create Hollywood-quality videos from simple text prompts, powered by the same visionary technology 
+            that brought you Tesla, SpaceX, and Neuralink.
+        </p>
+        
+        <a href="https://x.com/elonmusk" target="_blank" class="cta-button">Begin Your Journey</a>
+        
+        <div class="crypto-section">
+            <div class="crypto-badge">
+                <span class="crypto-label">Contract Address</span>
+                <div class="ca-container">
+                    <code class="contract-address" id="contractAddress">0x1234567890abcdef1234567890abcdef12345678</code>
+                    <button class="copy-btn" onclick="copyContract()">
+                        📋
+                    </button>
+                </div>
+                <p class="crypto-info">$IMAGINE Token • Join the Revolution</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // Copy contract address function
+        function copyContract() {
+            const address = document.getElementById('contractAddress').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                showToast('Contract address copied!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = address;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Contract address copied!');
+            });
+        }
+        
+        // Toast notification function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Add interactive star generation on click
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.crypto-badge')) return;
+            
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 8 + 4 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = e.clientX + 'px';
+            star.style.top = e.clientY + 'px';
+            star.style.position = 'fixed';
+            star.style.zIndex = '100';
+            star.style.animation = 'twinkle 2s ease-in-out';
+            
+            document.body.appendChild(star);
+            
+            setTimeout(() => {
+                star.remove();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
