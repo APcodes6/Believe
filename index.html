@@ -1,47 +1,6 @@
-        /* X Logo in top right */
-        .x-logo-link {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 0.5s;
-        }
-        
-        .x-logo-link:hover {
-            background: rgba(255, 215, 0, 0.2);
-            border-color: #ffd700;
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-        }
-        
-        .x-logo-link svg {
-            width: 24px;
-            height: 24px;
-            color: #fff;
-            transition: color 0.3s ease;
-        }
-        
-        .x-logo-link:hover svg {
-            color: #ffd700;
-        }
-        
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }<!DOCTYPE html>
+
+       
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,7 +23,7 @@
             position: relative;
         }
 
-        /* Animated gradient background */
+        
         .universe-bg {
             position: fixed;
             top: 0;
@@ -75,7 +34,7 @@
             z-index: 0;
         }
 
-        /* Nebula effect */
+        
         .nebula {
             position: absolute;
             width: 100%;
@@ -93,7 +52,7 @@
             66% { transform: translate(-30px, 30px) scale(0.9); }
         }
 
-        /* Stars background */
+       
         .stars-bg {
             position: fixed;
             top: 0;
@@ -116,7 +75,7 @@
             padding: 20px;
         }
 
-        /* Enhanced star decoration */
+        
         .star-system {
             position: absolute;
             top: -80px;
@@ -206,7 +165,7 @@
             }
         }
 
-        /* Enhanced title */
+        
         h1 {
             font-family: 'Cinzel', serif;
             font-size: clamp(4rem, 12vw, 8rem);
@@ -227,7 +186,7 @@
             animation: subtle-glow 4s ease-in-out infinite;
         }
 
-        /* Remove the tacky 3D effect */
+        
         h1::before {
             display: none;
         }
@@ -241,7 +200,7 @@
             }
         }
 
-        /* Particle effect container */
+        
         .particles {
             position: absolute;
             width: 100%;
@@ -279,7 +238,7 @@
             }
         }
 
-        /* Enhanced subtitle */
+        
         .subtitle {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.5rem, 4vw, 2.5rem);
@@ -300,7 +259,7 @@
             50% { background-position: 100% center; }
         }
 
-        /* Enhanced description */
+        
         .description {
             max-width: 700px;
             text-align: center;
@@ -313,7 +272,6 @@
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
-        /* Announcement banner */
         .announcement {
             margin: 30px 0;
             padding: 20px 40px;
@@ -332,7 +290,6 @@
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
-        /* Crypto section */
         .crypto-section {
             margin: 60px 0;
             opacity: 0;
@@ -418,7 +375,6 @@
             margin-bottom: 0;
         }
 
-        /* Enhanced CTA Button */
         .cta-button {
             display: inline-block;
             padding: 25px 70px;
@@ -474,9 +430,7 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* X Profile Button */
 
-        /* Enhanced shooting stars */
         .shooting-star {
             position: absolute;
             width: 4px;
@@ -502,7 +456,6 @@
             filter: blur(1px);
         }
 
-        /* Enhanced features section */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -572,7 +525,6 @@
             font-size: 1.05rem;
         }
 
-        /* Floating orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -642,7 +594,6 @@
             }
         }
 
-        /* Static stars */
         .star {
             position: absolute;
             background: white;
@@ -651,14 +602,12 @@
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
         }
 
-        /* Generate random particles */
         .particle:nth-child(odd) { animation-delay: 0s; left: 10%; }
         .particle:nth-child(even) { animation-delay: 2s; left: 30%; }
         .particle:nth-child(3n) { animation-delay: 4s; left: 50%; }
         .particle:nth-child(4n) { animation-delay: 6s; left: 70%; }
         .particle:nth-child(5n) { animation-delay: 8s; left: 90%; }
         
-        /* Toast notification */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -743,13 +692,13 @@
             that brought you Tesla, SpaceX, and Neuralink.
         </p>
         
-        <a href="https://x.com/elonmusk" target="_blank" class="cta-button">Begin Your Journey</a>
+        <a href="https://x.com/ImagineVids" target="_blank" class="cta-button">Begin Your Journey</a>
         
         <div class="crypto-section">
             <div class="crypto-badge">
                 <span class="crypto-label">Contract Address</span>
                 <div class="ca-container">
-                    <code class="contract-address" id="contractAddress">0x1234567890abcdef1234567890abcdef12345678</code>
+                    <code class="contract-address" id="contractAddress">EuU9Vh37eKDdUnZkUfMZLGCcBqwFYpr1E6X3ZwUxhvgm</code>
                     <button class="copy-btn" onclick="copyContract()">
                         📋
                     </button>
