@@ -1,6 +1,4 @@
-
-       
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +21,7 @@
             position: relative;
         }
 
-        
+
         .universe-bg {
             position: fixed;
             top: 0;
@@ -34,7 +32,7 @@
             z-index: 0;
         }
 
-        
+
         .nebula {
             position: absolute;
             width: 100%;
@@ -52,7 +50,7 @@
             66% { transform: translate(-30px, 30px) scale(0.9); }
         }
 
-       
+
         .stars-bg {
             position: fixed;
             top: 0;
@@ -63,7 +61,7 @@
             z-index: 1;
         }
 
-        /* Main content */
+
         .container {
             position: relative;
             z-index: 10;
@@ -165,7 +163,6 @@
             }
         }
 
-        
         h1 {
             font-family: 'Cinzel', serif;
             font-size: clamp(4rem, 12vw, 8rem);
@@ -186,7 +183,6 @@
             animation: subtle-glow 4s ease-in-out infinite;
         }
 
-        
         h1::before {
             display: none;
         }
@@ -200,7 +196,6 @@
             }
         }
 
-        
         .particles {
             position: absolute;
             width: 100%;
@@ -238,7 +233,6 @@
             }
         }
 
-        
         .subtitle {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.5rem, 4vw, 2.5rem);
@@ -259,7 +253,6 @@
             50% { background-position: 100% center; }
         }
 
-        
         .description {
             max-width: 700px;
             text-align: center;
@@ -630,18 +623,15 @@
     </style>
 </head>
 <body>
-    <!-- Universe background -->
     <div class="universe-bg">
         <div class="nebula"></div>
     </div>
 
-    <!-- Animated background with stars -->
     <div class="stars-bg">
         <!-- Floating orbs -->
         <div class="orb orb1"></div>
         <div class="orb orb2"></div>
 
-        <!-- Shooting stars -->
         <div class="shooting-star" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
         <div class="shooting-star" style="top: 30%; left: 80%; animation-delay: 1.5s;"></div>
         <div class="shooting-star" style="top: 60%; left: 20%; animation-delay: 3s;"></div>
@@ -649,7 +639,6 @@
         <div class="shooting-star" style="top: 80%; left: 90%; animation-delay: 6s;"></div>
         <div class="shooting-star" style="top: 40%; left: 30%; animation-delay: 7.5s;"></div>
         
-        <!-- Static twinkling stars -->
         <div class="star" style="width: 6px; height: 6px; top: 15%; left: 25%;"></div>
         <div class="star" style="width: 8px; height: 8px; top: 20%; left: 75%; animation-delay: 0.5s;"></div>
         <div class="star" style="width: 4px; height: 4px; top: 40%; left: 45%; animation-delay: 1s;"></div>
@@ -662,7 +651,6 @@
         <div class="star" style="width: 7px; height: 7px; top: 75%; left: 20%; animation-delay: 3.5s;"></div>
     </div>
 
-    <!-- Particle effects -->
     <div class="particles">
         <div class="particle"></div>
         <div class="particle"></div>
@@ -674,7 +662,6 @@
         <div class="particle"></div>
     </div>
 
-    <!-- Main content -->
     <div class="container">
         <div style="position: relative;">
             <div class="star-system">
